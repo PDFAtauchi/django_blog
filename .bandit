@@ -1,0 +1,6 @@
+[bandit]
+targets = apps
+recursive = true
+skips = B101
+exclude: **/tests*.py
+exclude_dirs = ["**/apps/tests/*"]

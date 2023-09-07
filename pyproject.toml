@@ -1,0 +1,88 @@
+[tool.poetry]
+name = "django-blog"
+version = "0.1.0"
+description = ""
+authors = ["PDFAtauchi <floresatauchi@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^3.2"
+django-environ = "^0.9.0"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.7.0"
+bandit = "^1.7.4"
+black = "^22.10.0"
+coverage = "^6.5.0"
+django_mock_queries = "^2.1.7"
+factory-boy = "^3.2.1"
+isort = "^5.10.1"
+mixer = "^7.2.2"
+mypy = "^0.982"
+pre-commit = "^2.20.0"
+pylint = "2.14.0"
+pylint-django = "^2.5.3"
+pylint-runner = "^0.6.0"
+pytest = "^7.1.3"
+pytest-cov = "^4.0.0"
+pytest-django = "^4.5.2"
+pytest-html = "^3.1.1"
+pytest-mock = "^3.10.0"
+pytest-profiling = "^1.7.0"
+pytest-randomly = "^3.12.0"
+pytest-rerunfailures = "^10.2"
+pytest-sugar = "^0.9.5"
+pytest-watch = "^4.2.0"
+safety = "^1.10.3"
+radon = "^5.1.0"
+pytest-xdist = "^3.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "-v -p no:warnings -rsxX -l --tb=short --strict --nomigrations --cov=apps --cov-report=html --cov-report term-missing:skip-covered"
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*", "*Test", "*Suite"]
+python_functions=["test_*", "*_test"]
+python_paths = "apps"
+testpaths="apps/tests/"
+
+[tool.coverage.run]
+branch = true
+omit=["myenv/*", "config/*", "manage.py", "**/apps.py", "**/admin.py", "*_test", "**/test_*.py", "**/serializers.py", "**/migrations/*.py"]
+
+[tool.coverage.report]
+ignore_errors = false
+show_missing = true
+skip_covered = true
+precision = 2
+fail_under = 80
+omit=["myenv/*", "config/*", "manage.py", "**/apps.py", "**/admin.py", "*_test", "**/test_*.py", "**/serializers.py", "**/migrations/*.py", "scripts/*"]
+
+[tool.black]
+line-length = 100
+force-exclude= ["**/static/*", "**/staticfiles/*", "**/mediafiles/*"]
+exclude = ["**/static/*", "**/staticfiles/*", "**/mediafiles/*", "**/migrations/*"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+lines_between_types = 1
+lines_after_imports = 2
+known_first_party = "apps"
+known_django = "django"
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 90
+skip = "myenv,migrations"
+sections = "FUTURE,STDLIB,DJANGO,FIRSTPARTY,LOCALFOLDER,THIRDPARTY"
+import_heading_stdlib = 'Standard library imports'
+import_heading_firstparty = 'Local application imports'
+import_heading_localfolder = 'Local folder imports'
+import_heading_thirdparty = 'Third party imports'
+import_heading_django= 'Django framework'
