@@ -36,7 +36,7 @@ repos:
     hooks:
       - id: pylint
         name: check pylint
-        entry: bash -c "poetry run pylint_runner"
+        entry: bash -c "docker-compose exec -T web poetry run pylint_runner"
         args:
           - --rcfile=.pylintrc
         language: python
@@ -76,7 +76,7 @@ repos:
     hooks:
     - id: migrations-check
       name: Check for uncreated migrations.
-      entry: bash -c "python manage.py makemigrations --check --dry-run"
+      entry: bash -c "docker-compose exec -T web python manage.py makemigrations --check --dry-run"
       language: python
       language_version: python3
       types: [python]
@@ -85,7 +85,7 @@ repos:
     hooks:
     - id: tests
       name: Run tests
-      entry: bash -c "poetry run pytest -n auto"
+      entry: bash -c "docker-compose exec -T web  poetry run pytest -n auto"
       language: python
       language_version: python3
       types: [python]

@@ -37,6 +37,7 @@ pytest-watch = "^4.2.0"
 safety = "^1.10.3"
 radon = "^5.1.0"
 pytest-xdist = "^3.0.2"
+django-extensions = "^3.2.3"
 
 [build-system]
 requires = ["poetry-core"]

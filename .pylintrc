@@ -1,13 +1,13 @@
 [MASTER]
 
 # Files or directories to be skipped. They should be base names, not paths.
-ignore=migrations,manage.py,config/settings.py,static/*,**/tests
+ignore=migrations,manage.py,config/setting,static/*,**/tests
 ignore-patterns=(.)*_test\.py,test_(.)*\.py
 
 # List of plugins (as comma separated values of python module names) to load,
 # usually to register additional checkers.
 load-plugins=pylint_django,pylint.extensions.mccabe
-django-settings-module=config.settings
+django-settings-module=config
 
 fail-under=10
 
