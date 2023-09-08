@@ -101,7 +101,7 @@ jobs:
       - name: Run migrations
         run: poetry run python manage.py migrate
       - name: Run tests
-        run: poetry run pytest
+        run: poetry run pytest --cov=./ --cov-report=xml
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
