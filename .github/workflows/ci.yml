@@ -53,7 +53,7 @@ jobs:
         run: |
           poetry run black . --check  -v --diff --color
       - name: Run isort
-        run: poetry run isort . --check-only
+        run: poetry run isort . --check-only --settings-path pyproject.toml
 
   testing_code_coverage:
     strategy:
