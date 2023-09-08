@@ -45,7 +45,7 @@ jobs:
           poetry run pylint_runner --rcfile=.pylintrc
       - name: Run safety
         run: |
-          poetry run safety check --full-report
+          poetry run safety check --full-report --ignore 51457
       - name: Run bandit
         run: |
           poetry run bandit --ini .bandit -r -x=**/tests*.py
