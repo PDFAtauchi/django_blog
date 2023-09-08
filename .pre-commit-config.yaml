@@ -51,11 +51,11 @@ repos:
         language: python
         language_version: python3
         types: [python]
-  - repo: local
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
     hooks:
       - id: isort
-        name: check sort imports
-        entry: bash -c "docker-compose exec web poetry run isort . --check-only --settings-path pyproject.toml --color never"
+        entry: bash -c "docker-compose exec -T web poetry run isort . --settings-path pyproject.toml"
         language: python
         language_version: python3
         types: [python]
