@@ -85,6 +85,7 @@ $ docker-compose exec web poetry run pytest -n auto apps/tests
 To run Coverage (pytest-coverage)
 ```console
 $ docker-compose exec web poetry run pytest --cov=. --junitxml=test-results/junit.xml
+$ docker-compose exec web poetry run pytest html
 ```
 
 ## Additionals
@@ -122,7 +123,7 @@ $ docker-compose exec web python manage.py shell_plus
 To enter container
  ```console
 - pytest.set_trace()  (breakpoint)
-- docker-compose exec web poetry run pytest path_test -pdb | path_test can be:
+- docker-compose exec web poetry run pytest path_test --pdb | path_test can be:
     - file e.g. apps/tests/test_assert_examples.py -
     - class e.g.  apps/tests/test_assert_examples.py::TestClassName
     - specific test inside a class e.g. apps/tests/test_assert_examples.py::TestClassName::test_specific_function
