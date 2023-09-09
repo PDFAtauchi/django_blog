@@ -1,4 +1,8 @@
 # Django framework
+from django.contrib import admin
+
+# Local application imports
+from apps.users.models import Profile
 
 
-# Register your models here.
+admin.site.register(Profile)
