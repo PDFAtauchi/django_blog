@@ -27,7 +27,7 @@ class RegisterAccountTest(TestCase):
         response = self.client.get(self.register_account_url)
 
         # Then
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
         # And
         template = 'users/register.html'
@@ -67,7 +67,7 @@ class RegisterAccountTest(TestCase):
         response = self.client.post(self.register_account_url, data=data, format="json",)
 
         # Then
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         assert response.context["form"].errors["password2"][0] == "Esta contraseña es demasiado corta. Debe contener al menos 8 caracteres."
         assert response.context["form"].errors["password2"][1] == "Esta contraseña es demasiado común."
         assert response.context["form"].errors["password2"][2] == "Esta contraseña es completamente numérica."
