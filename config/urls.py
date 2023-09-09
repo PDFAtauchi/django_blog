@@ -28,5 +28,5 @@ urlpatterns = [
     path("", include("apps.blog.urls")),
 ]
 
-if settings.DEBUG:
+if settings.ENABLE_MEDIA_SERVING:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
