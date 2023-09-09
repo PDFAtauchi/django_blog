@@ -15,8 +15,8 @@ def register(request):
             user = form.save(commit=False)
             user.save()
             messages.success(
-                request, f"Cuenta creada con éxito para {user.username}")
-            return redirect("home-page")
+                request, f"Cuenta creada con éxito para {user.username}!!!, ya puedes ingresar")
+            return redirect("login")
     else:
         form = UserRegisterForm()
     context = {'form': form}

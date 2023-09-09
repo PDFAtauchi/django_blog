@@ -16,7 +16,7 @@ pytestmark = pytest.mark.django_db
 class RegisterAccountTest(TestCase):
     def setUp(self):
         self.register_account_url = reverse("register-account")
-        self.home_page_url_redirect = reverse("home-page")
+        self.login_url_redirect = reverse("login")
         self.client = Client()
 
     def tearDown(self):
@@ -44,7 +44,7 @@ class RegisterAccountTest(TestCase):
         response = self.client.post(self.register_account_url, data=data, format="json",)
 
         # Then
-        self.assertRedirects(response, self.home_page_url_redirect, status_code=302,
+        self.assertRedirects(response, self.login_url_redirect, status_code=302,
                            target_status_code=200)
 
     def test_account_register_return_form_in_context(self):
