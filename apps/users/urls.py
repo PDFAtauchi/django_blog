@@ -7,4 +7,5 @@ from apps.users import views
 
 urlpatterns = [
     path("register/", views.register, name="register-account"),
+    path("profile/", views.profile, name="profile-account"),
 ]
