@@ -35,12 +35,12 @@
     <div role="main" class="container">
       <div class="row">
         <div class="col-md-8">
-          {% block content %}
           {% include 'base/messages/msg_info.html' %}
           {% include 'base/messages/msg_error.html' %}
           {% include 'base/messages/msg_success.html' %}
           {% include 'base/form_errors/form_error_alert.html' %}
-        {% endblock %}
+          {% block content %}
+          {% endblock %}
         </div>
 
         <div class="col-md-4">
