@@ -9,6 +9,8 @@ services:
     ports:
       - "8000:8000"
     restart: "always"
+    stdin_open: true
+    tty: true
     depends_on:
       - db
     env_file:

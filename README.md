@@ -132,7 +132,7 @@ To enter container
 
 ## In python code:
  ```console
-- change import pytest; pytest.set_trace() to import pdb; pdb.set_trace()
+- change import pytest; pytest.set_trace() to import pdb; pdb.set_trace() || breakpoint()
 - To attach container
     - sudo docker attach $(docker-compose ps -q service_name)
 - in the code: put

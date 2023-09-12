@@ -7,4 +7,4 @@ class UsersConfig(AppConfig):
 
     def ready(self):
         # pylint: disable=unused-import
-        pass
+        import apps.users.signals # NOQA
