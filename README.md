@@ -82,6 +82,12 @@ pytest-xdist (concurrency)
 $ docker-compose exec web poetry run pytest -n auto apps/tests
 ```
 
+pytest-rerun (to check flaky tests)
+```console
+$ docker-compose exec web poetry run pytest -n auto apps/tests --reruns 10
+```
+
+
 To run Coverage (pytest-coverage)
 ```console
 $ docker-compose exec web poetry run pytest --cov=. --junitxml=test-results/junit.xml

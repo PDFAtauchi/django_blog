@@ -2,7 +2,7 @@
 
 
 {% block content %}
-
+    <h1 class="mb-3"> Posts by {{ view.kwargs.username }} | page ({{ page_obj.paginator.count }}) </h1>
     {% for post in posts %}
     <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" alt="profile image">
@@ -11,7 +11,7 @@
             <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
             <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
           </div>
-          <h2><a class="article-title" href="{% url  'post-detail' post.pk %}">{{ post.title }}</a></h2>
+          <h2><a class="article-title" href="{% url  'post-detail' post.pk%}">{{ post.title }}</a></h2>
           <p class="article-content">{{ post.content }}</p>
         </div>
       </article>

@@ -10,12 +10,13 @@ pytestmark = pytest.mark.django_db
 
 class AboutPageTest(TestCase):
 
-    def setup_class(self):
+    def setUp(self):
+        super().setUp()
         self.about_page_url = reverse("about-page")
         self.client = Client()
 
     def tearDown(self):
-        pass
+        super().tearDown()
 
     def test_about_page_return_title(self):
         # When

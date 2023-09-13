@@ -10,13 +10,18 @@ from apps.blog.models import Post
 import pytest
 
 
-@pytest.mark.django_db
+pytestmark = pytest.mark.django_db
+
 class PostCreateViewTest(TestCase):
 
     def setUp(self):
+        super().setUp()
         self.user = User.objects.create_user(username='testuser', password='testpassword')
         self.client.login(username='testuser', password='testpassword')
         self.post_create_url = reverse('post-create')
+
+    def tearDown(self):
+        super().tearDown()
 
     def test_create_post(self):
         # Given

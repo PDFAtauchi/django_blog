@@ -10,12 +10,13 @@ pytestmark = pytest.mark.django_db
 
 class HomePageTest(TestCase):
 
-    def setup_class(self):
+    def setUp(self):
+        super().setUp()
         self.home_page_url = reverse("home-page")
         self.client = Client()
 
     def tearDown(self):
-        pass
+        super().tearDown()
 
     def test_home_page_return_title(self):
         # When

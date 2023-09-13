@@ -15,12 +15,13 @@ pytestmark = pytest.mark.django_db
 
 class RegisterAccountTest(TestCase):
     def setUp(self):
+        super().setUp()
         self.register_account_url = reverse("register-account")
         self.login_url_redirect = reverse("login")
         self.client = Client()
 
     def tearDown(self):
-        pass
+        super().tearDown()
 
     def test_account_register_get_request(self):
         # When

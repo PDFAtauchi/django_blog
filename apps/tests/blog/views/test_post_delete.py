@@ -14,13 +14,13 @@ import pytest
 class PostCreateViewTest(TestCase):
 
     def setUp(self):
+        super().setUp()
         self.user = User.objects.create_user(username='testuser', password='testpassword')
         self.client.login(username='testuser', password='testpassword')
         self.post = Post.objects.create(title="My Post", content="Content of my Post", author=self.user)
 
     def tearDown(self):
-        if self.user:
-            self.client.logout()
+        super().tearDown()
 
     def test_delete_post(self):
         # Given
