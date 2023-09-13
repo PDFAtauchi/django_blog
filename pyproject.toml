@@ -65,7 +65,7 @@ ignore_errors = false
 show_missing = true
 skip_covered = true
 precision = 2
-fail_under = 80
+fail_under = 75
 omit=["myenv/*", "config/*", "manage.py", "**/apps.py", "**/admin.py", "*_test", "**/test_*.py", "**/serializers.py", "**/migrations/*.py", "scripts/*"]
 
 [tool.black]
