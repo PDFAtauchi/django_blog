@@ -3,7 +3,13 @@ from django.test import SimpleTestCase
 from django.urls import resolve, reverse
 
 # Local application imports
-from apps.blog.views import PostDetailView, PostListView, about
+from apps.blog.views import (
+    PostCreateView,
+    PostDetailView,
+    PostListView,
+    PostUpdateView,
+    about,
+)
 
 
 class HomePageTest(SimpleTestCase):
@@ -17,6 +23,18 @@ class PostDetailTest(SimpleTestCase):
         url = reverse("post-detail", kwargs={"pk": 1})
         class_found = resolve(url).func.view_class
         assert class_found == PostDetailView
+
+class PostCreateTest(SimpleTestCase):
+    def test_post_create(self):
+        url = reverse("post-create")
+        class_found = resolve(url).func.view_class
+        assert class_found == PostCreateView
+
+class PostUpdateTest(SimpleTestCase):
+    def test_post_update(self):
+        url = reverse("post-update", kwargs={"pk": 1})
+        class_found = resolve(url).func.view_class
+        assert class_found == PostUpdateView
 
 class AboutPageTest(SimpleTestCase):
     def test_about_page(self):
