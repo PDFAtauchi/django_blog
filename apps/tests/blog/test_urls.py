@@ -5,6 +5,7 @@ from django.urls import resolve, reverse
 # Local application imports
 from apps.blog.views import (
     PostCreateView,
+    PostDeleteView,
     PostDetailView,
     PostListView,
     PostUpdateView,
@@ -35,6 +36,12 @@ class PostUpdateTest(SimpleTestCase):
         url = reverse("post-update", kwargs={"pk": 1})
         class_found = resolve(url).func.view_class
         assert class_found == PostUpdateView
+
+class PostDeleteTest(SimpleTestCase):
+    def test_post_delete(self):
+        url = reverse("post-delete", kwargs={"pk": 1})
+        class_found = resolve(url).func.view_class
+        assert class_found == PostDeleteView
 
 class AboutPageTest(SimpleTestCase):
     def test_about_page(self):

@@ -3,7 +3,13 @@ from django.urls import path
 
 # Local application imports
 from apps.blog import views
-from apps.blog.views import PostCreateView, PostDetailView, PostListView, PostUpdateView
+from apps.blog.views import (
+    PostCreateView,
+    PostDeleteView,
+    PostDetailView,
+    PostListView,
+    PostUpdateView,
+)
 
 
 urlpatterns = [
@@ -11,5 +17,6 @@ urlpatterns = [
     path("post/<int:pk>/", PostDetailView.as_view(), name="post-detail"),
     path("post/new/", PostCreateView.as_view(), name="post-create"),
     path("post/<int:pk>/update/", PostUpdateView.as_view(), name="post-update"),
+    path("post/<int:pk>/delete/", PostDeleteView.as_view(), name="post-delete"),
     path("about/", views.about, name="about-page"),
 ]
