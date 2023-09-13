@@ -1,11 +1,16 @@
 # Django framework
 from django.test import TestCase
+from django.urls import reverse
 
 # Local application imports
 from apps.blog.models import Post
 from apps.tests.factories.users import UserFactory
 
+# Third party imports
+import pytest
 
+
+@pytest.mark.django_db
 class TestPostModel(TestCase):
     def setUp(self):
         self.author = UserFactory()
@@ -84,3 +89,14 @@ class TestPostModel(TestCase):
         # Then
         posts_count = Post.objects.all().count()
         self.assertEqual(posts_count, len(posts))
+
+    def test_get_absolute_url(self):
+        # Given
+        post = Post(title="Blog Post 1", author_id=self.author.id)
+
+        # When
+        post.save()
+
+        # Then
+        expected_url = reverse('post-detail', kwargs={'pk': post.pk})
+        assert post.get_absolute_url() == expected_url
