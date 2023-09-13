@@ -15,6 +15,7 @@ pytestmark = pytest.mark.django_db
 
 class ProfileUpdateTest(TestCase):
     def setUp(self):
+        super().setUp()
         self.user = User.objects.create_user(
             username='testuser', password='testpassword', email='test@example.com')
 
@@ -23,7 +24,8 @@ class ProfileUpdateTest(TestCase):
         self.client = Client()
 
     def tearDown(self):
-        self.user.delete()
+        # self.user.delete()
+        super().tearDown()
 
     def test_get_profile_view_unauthenticated(self):
         # When

@@ -9,6 +9,7 @@ from apps.blog.views import (
     PostDetailView,
     PostListView,
     PostUpdateView,
+    UserPostListView,
     about,
 )
 
@@ -42,6 +43,12 @@ class PostDeleteTest(SimpleTestCase):
         url = reverse("post-delete", kwargs={"pk": 1})
         class_found = resolve(url).func.view_class
         assert class_found == PostDeleteView
+
+class UserPostListTest(SimpleTestCase):
+    def test_post_update(self):
+        url = reverse("user-posts", kwargs={"username": "mytest"})
+        class_found = resolve(url).func.view_class
+        assert class_found == UserPostListView
 
 class AboutPageTest(SimpleTestCase):
     def test_about_page(self):

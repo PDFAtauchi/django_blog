@@ -8,10 +8,11 @@ from apps.users.models import Profile
 
 class TestProfileModel(TestCase):
     def setUp(self):
+        super().setUp()
         self.user = UserFactory(username="Tom")
 
     def tearDown(self):
-        pass
+        super().tearDown()
 
     def test_profile_resize_image_save(self):
         # Given

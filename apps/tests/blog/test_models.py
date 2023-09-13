@@ -10,13 +10,15 @@ from apps.tests.factories.users import UserFactory
 import pytest
 
 
-@pytest.mark.django_db
+pytestmark = pytest.mark.django_db
+
 class TestPostModel(TestCase):
     def setUp(self):
+        super().setUp()
         self.author = UserFactory()
 
     def tearDown(self):
-        pass
+        super().tearDown()
 
     def test_post_save(self):
         # Given

@@ -1,5 +1,5 @@
 # Django framework
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
@@ -10,17 +10,19 @@ from apps.blog.models import Post
 import pytest
 
 
+User = get_user_model()
+
 @pytest.mark.django_db
 class PostCreateViewTest(TestCase):
 
     def setUp(self):
+        super().setUp()
         self.user = User.objects.create_user(username='testuser', password='testpassword')
         self.client.login(username='testuser', password='testpassword')
         self.post = Post.objects.create(title="My Post", content="Content of my Post", author=self.user)
 
     def tearDown(self):
-        if self.user:
-            self.client.logout()
+        super().tearDown()
 
     def test_update_post(self):
         # Given
