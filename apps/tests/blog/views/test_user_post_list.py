@@ -35,7 +35,7 @@ class UserPostListTest(TestCase):
         response = self.client.get(user_posts_list_url)
 
         # Then
-        self.assertEquals(response.status_code, 200)
+        assert response.status_code == 200
 
         # And
         template = 'blog/user_posts.html'
