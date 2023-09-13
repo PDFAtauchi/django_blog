@@ -2,20 +2,29 @@
 import io
 
 # Django framework
+from django.contrib.auth import get_user_model
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 
 # Local application imports
-from apps.tests.factories.users import UserFactory
 from apps.users.models import Profile
 
 # Third party imports
+import pytest
+
 from PIL import Image
 
 
+User = get_user_model()
+
+pytestmark = pytest.mark.django_db
+
 class TestProfileModel(TestCase):
     def setUp(self):
-        self.user = UserFactory()
+        self.user = User.objects.create_user(
+            username='testuser', email='test@example.com')
+        self.user.set_password("123")
+        self.user.save()
 
     def tearDown(self):
         pass
