@@ -15,7 +15,7 @@ from PIL import Image
 
 class TestProfileModel(TestCase):
     def setUp(self):
-        self.user = UserFactory(username=self.username)
+        self.user = UserFactory()
 
     def tearDown(self):
         pass
