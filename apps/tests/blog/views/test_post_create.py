@@ -6,7 +6,11 @@ from django.urls import reverse
 # Local application imports
 from apps.blog.models import Post
 
+# Third party imports
+import pytest
 
+
+@pytest.mark.django_db
 class PostCreateViewTest(TestCase):
 
     def setUp(self):
@@ -25,7 +29,8 @@ class PostCreateViewTest(TestCase):
         response = self.client.post(self.post_create_url, data)
 
         # Then
-        post_detail_url = reverse('post-detail', args=[1])
+        post = Post.objects.get(author=self.user)
+        post_detail_url = reverse('post-detail', args=[post.pk])
         self.assertRedirects(response, post_detail_url, status_code=302,
                            target_status_code=200)
 
